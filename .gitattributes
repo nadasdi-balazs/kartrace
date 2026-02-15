@@ -1,0 +1,20 @@
+# Auto detect text files and normalize line endings to LF
+* text=auto
+
+# Java sources
+*.java text diff=java
+*.gradle text diff=java
+*.gradle.kts text diff=java
+
+# These files are text and should be normalized (convert crlf => lf)
+*.xml text
+*.properties text
+*.yml text
+*.yaml text
+*.md text
+
+# These files are binary and should not be modified
+*.jar binary
+*.zip binary
+*.png binary
+*.jpg binary
