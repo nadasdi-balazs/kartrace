@@ -1,0 +1,39 @@
+meta {
+  name: Get Winner
+  type: http
+  seq: 4
+}
+
+get {
+  url: {{baseUrl}}/api/races/{{raceId}}/winner
+  body: none
+  auth: none
+}
+
+docs {
+  Retrieves the winner of the race.
+
+  The winner is the driver with the fastest lap time.
+
+  Response includes:
+  - kartNumber: The winning kart number
+  - lapNumber: Which lap was the fastest
+  - lapDuration: Duration of the fastest lap
+  - lapStartTime: When the fastest lap started
+
+  **Note**: Make sure to set the raceId environment variable from the Start Race response.
+}
+
+tests {
+  test("Status code is 200", function() {
+    expect(res.getStatus()).to.equal(200);
+  });
+
+  test("Response contains winner data", function() {
+    const body = res.getBody();
+    expect(body.kartNumber).to.be.a('number');
+    expect(body.lapNumber).to.be.a('number');
+    expect(body.lapDuration).to.exist;
+    expect(body.lapStartTime).to.exist;
+  });
+}

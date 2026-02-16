@@ -1,0 +1,18 @@
+meta {
+  name: Start Race
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:8080/api/races/start
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "kartNumbers": [1, 2, 3, 4, 5],
+    "totalLaps": 10
+  }
+}
