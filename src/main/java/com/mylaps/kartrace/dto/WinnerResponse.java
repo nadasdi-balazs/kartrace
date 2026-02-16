@@ -4,10 +4,12 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 
 public record WinnerResponse(
-        int kartNumber,
-        int lapNumber,
+        boolean isRaceFinished,
+        Integer kartNumber,
+        Integer lapNumber,
         Duration lapDuration,
-        LocalDateTime lapStartTime
+        LocalDateTime lapStartTime,
+        LocalDateTime lapCompleteTime
 ) {
 }
 
