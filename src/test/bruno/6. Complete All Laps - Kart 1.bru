@@ -1,0 +1,22 @@
+meta {
+  name: Complete All Laps - Kart 1
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{baseUrl}}/api/races/lap-times
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "kartNumber": 1,
+    "completedAt": "2026-02-16T02:01:00"
+  }
+}
+
+docs {
+  Kart 1 - Lap 2 completed
+}

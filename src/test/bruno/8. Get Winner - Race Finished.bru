@@ -1,0 +1,42 @@
+meta {
+  name: Get Winner - Race Finished
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{baseUrl}}/api/races/winner
+  body: none
+  auth: none
+}
+
+docs {
+  Get the winner after race is finished.
+
+  Expected winner: Kart #1, Lap #3 with 25 second duration
+  (because 25s < 28s of Kart 2's first lap)
+}
+
+tests {
+  test("Status code is 200", function() {
+    expect(res.getStatus()).to.equal(200);
+  });
+
+  test("Race is finished", function() {
+    const body = res.getBody();
+    expect(body.isRaceFinished).to.equal(true);
+  });
+
+  test("Winner is Kart 1", function() {
+    const body = res.getBody();
+    expect(body.kartNumber).to.equal(1);
+    expect(body.lapNumber).to.equal(3);
+  });
+
+  test("Fastest lap duration exists", function() {
+    const body = res.getBody();
+    expect(body.lapDuration).to.exist;
+    expect(body.lapStartTime).to.exist;
+    expect(body.lapCompleteTime).to.exist;
+  });
+}

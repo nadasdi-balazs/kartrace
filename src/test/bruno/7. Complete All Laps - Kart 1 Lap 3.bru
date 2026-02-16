@@ -1,0 +1,25 @@
+meta {
+  name: Complete All Laps - Kart 1 Lap 3
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{baseUrl}}/api/races/lap-times
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "kartNumber": 1,
+    "completedAt": "2026-02-16T02:01:25"
+  }
+}
+
+docs {
+  Kart 1 completes all 3 laps - RACE FINISHED!
+
+  Lap 2 duration: 30s (02:00:30 -> 02:01:00)
+  Lap 3 duration: 25s (02:01:00 -> 02:01:25) <- FASTEST LAP!
+}

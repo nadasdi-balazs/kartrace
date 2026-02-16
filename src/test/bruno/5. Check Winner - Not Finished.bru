@@ -1,0 +1,29 @@
+meta {
+  name: Check Winner - Not Finished
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{baseUrl}}/api/races/winner
+  body: none
+  auth: none
+}
+
+docs {
+  Check winner before race is finished.
+
+  Should return isRaceFinished: false with null values.
+}
+
+tests {
+  test("Status code is 200", function() {
+    expect(res.getStatus()).to.equal(200);
+  });
+
+  test("Race not finished yet", function() {
+    const body = res.getBody();
+    expect(body.isRaceFinished).to.equal(false);
+    expect(body.kartNumber).to.be.null;
+  });
+}
